@@ -26,10 +26,13 @@ print('HERE', session)
 my_dataframe = session.table("fruit_options")
 # my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
+print('my_dataframe')
 print(my_dataframe)
 
 # Convert Snowpark DataFrame to Pandas
 df = my_dataframe.to_pandas()
+print('df')
+print(df)
 
 # Extract column as list
 fruit_list = df['FRUIT_NAME'].tolist()
@@ -40,13 +43,13 @@ ingredients_list = st.multiselect(
     max_selections=5
 )
 
-```
+"""
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
    , my_dataframe
    , max_selections = 5
 )
-```
+"""
 
 if ingredients_list:
 
