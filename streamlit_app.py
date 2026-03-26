@@ -28,11 +28,25 @@ my_dataframe = session.table("fruit_options")
 #st.dataframe(data=my_dataframe, use_container_width=True)
 print(my_dataframe)
 
+# Convert Snowpark DataFrame to Pandas
+df = my_dataframe.to_pandas()
+
+# Extract column as list
+fruit_list = df['FRUIT_NAME'].tolist()
+
+ingredients_list = st.multiselect(
+    'Choose up to 5 ingredients:',
+    fruit_list,
+    max_selections=5
+)
+
+```
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
-   , my_dataframe['FRUIT_NAME']
+   , my_dataframe
    , max_selections = 5
 )
+```
 
 if ingredients_list:
 
