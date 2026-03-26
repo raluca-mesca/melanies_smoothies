@@ -30,7 +30,7 @@ my_dataframe = session.table("fruit_options")
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
-   , my_dataframe
+   , my_dataframe['FRUIT_NAME']
    , max_selections = 5
 )
 
