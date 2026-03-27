@@ -17,7 +17,6 @@ st.write("The name on your Smoothie will be", name_on_order)
 
 
 #option = st.selectbox('What is your favorite fruit?',('Banana','Strawberry','Peach'))
-
 #st.write('You selected',option)
 
 
@@ -25,15 +24,15 @@ cnx = st.connection("snowflake")
 session = cnx.session()
 #session = get_active_session()
 print('HERE', session)
-#my_dataframe = session.table("fruit_options") ...
-my_dataframe = session.table("fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
+my_dataframe = session.table("fruit_options")
+#my_dataframe = session.table("fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 st.dataframe(data=my_dataframe, use_container_width=True)
 st.stop()
 
 # Convert the Snowpark Dataframe to a Pandas Dataframe so we can use the LOC function
-pd_df=my_dataframe.to_pandas()
-st.dataframe(pd_df)
-st.stop()
+#pd_df=my_dataframe.to_pandas()
+#st.dataframe(pd_df)
+#st.stop()
 
 # adjusting below!
 # st.dataframe(data=my_dataframe, use_container_width=True)
