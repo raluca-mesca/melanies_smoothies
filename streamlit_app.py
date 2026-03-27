@@ -42,10 +42,10 @@ print(my_dataframe)
 
 # Convert Snowpark DataFrame to Pandas
 df = my_dataframe.to_pandas()
-print('df')
-print(df)
-st.dataframe(df)
-st.stop()
+#print('df')
+#print(df)
+#st.dataframe(df)
+#st.stop()
 
 # Extract column as list
 fruit_list = df['FRUIT_NAME'].tolist()
@@ -70,6 +70,10 @@ if ingredients_list:
 
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
+        
+        search_on=df.loc[df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', fruit_chosen, ' is ', search_on, '.')
+       
         st.subheader(fruit_chosen + 'Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)  
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
